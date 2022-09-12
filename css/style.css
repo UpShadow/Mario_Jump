@@ -5,12 +5,13 @@
 }
 
 .game-board {
-    width: 80%;
+    width: 100%;
     height: 500px;
-    border: 1px solid #333;
+    border-bottom: 15px solid green;
     margin: 0 auto;
     position: relative;
-     overflow: hidden; /* all objects that overflow from the game board are hiddenimage.png */
+    overflow: hidden; /* all objects that overflow from the game board are hiddenimage.png */
+    background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
 .pipe {
@@ -28,6 +29,18 @@
 
 .jump {
     animation: jump 500ms ease-out;
+}
+
+.clouds {
+    width: 550px;
+    position: absolute;
+    animation: clouds-animation 20s infinite linear;
+}
+
+.game-over-text {
+    width: 500px;
+    position: absolute;
+    left: 700px;
 }
 
 @keyframes pipe-animation {
@@ -59,5 +72,15 @@
 
     100% {
         bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -550px;
+    }
+
+    to {
+        right: 100%;
     }
 }
