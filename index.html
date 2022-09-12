@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/style.css">
@@ -12,16 +11,17 @@
 </head>
 <body>
     <div class="game-board">
-
+        <img src="./images/game-over-text.png" alt="" class="game-over-text">
+        <img src="./images//clouds.png" class="clouds">
         <img src="./images/mario.gif" class="mario">
         <img src="./images/pipe.png" class="pipe">
-
     </div>
 </body>
 <script>
     const mario = document.querySelector('.mario');
     const pipe = document.querySelector('.pipe');
-
+    const text = document.querySelector('.game-over-text');
+    
     const jump = () => {
         mario.classList.add('jump');
         
@@ -31,10 +31,10 @@
     }
 
     const loop = setInterval(() => {
-        
-
         const pipePosition = pipe.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', ''); // + convert a string to number
+        
+        text.style.display = 'none';
 
         if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
             pipe.style.animation = 'none';
@@ -47,11 +47,13 @@
             mario.style.width = '75px'
             mario.style.marginLeft = '50px'
 
+            text.style.display = 'block';
+
             clearInterval(loop);
         }
 
     }, 10);
-
+    
     document.addEventListener('keydown', jump);
 </script>
 </html>
